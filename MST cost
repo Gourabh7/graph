@@ -1,0 +1,24 @@
+//Mst cost 
+int spanningtree(int v,vector<vector<int>>adj[]) {
+priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
+pq.push({0,0});
+int sum  = 0 ;
+vector<int>vis(v,0);
+
+
+while(!pq.empty()) {
+int node = pq.top().second;
+int wt = pq.top().first;
+if(vis[node])continue;
+vis[node]=1;
+sum+=wt;
+pq.pop();
+for(auto it:adj[node]) {
+int adjNode = it[0];
+int edW = it[1];
+if(!vis[it]) {
+
+pq.push({edW,adjNode});}
+}
+}
+return sum;}
